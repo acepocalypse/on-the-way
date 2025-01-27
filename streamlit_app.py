@@ -130,11 +130,11 @@ def route_optimization(start, end, stops):
             total_duration_seconds += dur_seconds
 
             route_data.append({
-                'Segment': i + 1,
-                'Start': leg['start_address'],
-                'End': leg['end_address'],
-                'Distance (miles)': f"{round(dist_miles, 0):.2f}",
-                'Duration': format_time(dur_seconds)
+            'Segment': i + 1,
+            'Start': leg['start_address'],
+            'End': leg['end_address'],
+            'Distance (miles)': f"{int(round(dist_miles, 0))}",
+            'Duration': format_time(dur_seconds)
             })
 
         return {
