@@ -53,7 +53,7 @@ def stops_recommendation(start, end, interests, wanted_stops, trip_days):
         "List stops concisely, separated by semicolons. Exclude the end point. "
         "Merge stops within 30 miles of each other. Only output the name of the place without additional descriptions. "
         "Be specific with the names of the places. "
-        "Note that when listing national parks you need to include 'National Park' in the name and the state abbreviation."
+        "Note that when listing national parks or other natural landscapes you need to include 'National Park' or any appropriate suffix in the name and the state abbreviation."
     )
     try:
         ai_response = model.generate_content(prompt)
