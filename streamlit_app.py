@@ -8,14 +8,16 @@ import googlemaps
 from googlemaps.exceptions import ApiError
 
 # Load environment variables
-load_dotenv()
-google_api_key = os.getenv("GOOGLE_API_KEY")
-genai_api_key = os.getenv("GENAI_API_KEY")
+# load_dotenv()
+# google_api_key = os.getenv("GOOGLE_API_KEY")
+# genai_api_key = os.getenv("GENAI_API_KEY")
 
-# Validate API keys
-if not google_api_key or not genai_api_key:
-    st.error("Missing API keys in environment variables")
-    st.stop()
+# # Validate API keys
+# if not google_api_key or not genai_api_key:
+#     st.error("Missing API keys in environment variables")
+#     st.stop()
+google_api_key = st.secrets["api_keys"]["google_api_key"]
+genai_api_key = st.secrets["api_keys"]["genai_api_key"]
 
 # Set up clients
 gmaps = googlemaps.Client(key=google_api_key)
