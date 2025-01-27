@@ -51,7 +51,9 @@ def stops_recommendation(start, end, interests, wanted_stops, trip_days):
         f"Help me pick destinations for my {trip_days}-day road trip from {start} to {end}. "
         f"I'm interested in {', '.join(interests)} and want {wanted_stops} stops. "
         "List stops concisely, separated by semicolons. Exclude the end point. "
-        "Merge stops within 30 miles of each other. Only output the name of the place without additional descriptions. Note that when listing national parks you need to include 'National Park' in the name and the state abbreviation."
+        "Merge stops within 30 miles of each other. Only output the name of the place without additional descriptions. "
+        "Be specific with the names of the places. "
+        "Note that when listing national parks you need to include 'National Park' in the name and the state abbreviation."
     )
     try:
         ai_response = model.generate_content(prompt)
