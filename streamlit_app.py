@@ -211,37 +211,45 @@ def main():
                     )
                     if stops:
                         st.session_state["stops"] = stops
-                        st.success("Suggested stops:")
-                        for i, s in enumerate(stops, 1):
-                            st.write(f"{i}. {s}")
+                        st.session_state["selected_stops"] = []
+                        st.success("Select your preferred stops:")
                     else:
                         st.warning("Could not generate stops recommendations")
             else:
                 st.warning("Please enter your interests")
 
-    # Route optimization
-    if "stops" in st.session_state and st.button("Optimize Route"):
-        with st.spinner("Optimizing your route..."):
-            directions_result = route_optimization(
-                start_location,
-                end_location,
-                st.session_state["stops"]
-            )
-            if directions_result:
-                st.subheader("Optimized Route")
-                st.write(", ".join(directions_result["optimized_order"]))
+        # Add stops selection section
+        if "stops" in st.session_state:
+            st.subheader("Choose Your Stops")
+            selected_stops = []
+            for stop in st.session_state["stops"]:
+                if st.checkbox(stop, key=f"stop_{stop}"):
+                    selected_stops.append(stop)
+            st.session_state["selected_stops"] = selected_stops
 
-                st.subheader("Route Summary")
-                st.write(f"**Total Distance:** {directions_result['total_distance']:.2f} miles")
-                st.write(f"**Total Duration:** {directions_result['total_duration']}")
+            if not selected_stops:
+                st.warning("Please select at least one stop")
+            
+            # Route optimization
+            if selected_stops and st.button("Optimize Route"):
+                with st.spinner("Optimizing your route..."):
+                    directions_result = route_optimization(
+                        start_location,
+                        end_location,
+                        selected_stops
+                    )
+                    if directions_result:
+                        st.subheader("Optimized Route")
+                        st.write(", ".join(directions_result["optimized_order"]))
 
-                st.subheader("Route Details")
-                st.table(directions_result["route_data"])
+                        st.subheader("Route Summary")
+                        st.write(f"**Total Distance:** {directions_result['total_distance']:.2f} miles")
+                        st.write(f"**Total Duration:** {directions_result['total_duration']}")
 
-                # st.subheader("Route Visualization Data")
-                # st.json(directions_result["visualization_data"])
-            else:
-                st.error("Failed to optimize route")
-
+                        st.subheader("Route Details")
+                        st.table(directions_result["route_data"])
+                    else:
+                        st.error("Failed to optimize route")
+                        
 if __name__ == "__main__":
     main()
