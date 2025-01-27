@@ -145,7 +145,15 @@ def route_optimization(start, end, stops):
     return None
 
 def main():
-    st.title("On The Way")
+    col1, col2 = st.columns([1, 4])
+    
+    with col1:
+        # Assuming your logo is in an 'assets' folder. Adjust path as needed
+        st.image("assets/logo.png", width=100)  # Adjust width as needed
+    
+    with col2:
+        st.title("On The Way")
+        st.write("*Your perfect road trip planner*")
 
     # Input section
     start_location = st.text_input("Enter start location:", key="start")
