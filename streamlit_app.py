@@ -149,7 +149,7 @@ def main():
     
     with col1:
         # Assuming your logo is in an 'assets' folder. Adjust path as needed
-        st.image("assets/logo.png", width=200, use_column_width=True)  # Increased width and made responsive
+        st.image("assets/logo.png", width=200, use_container_width=True)  # Increased width and made responsive
     
     with col2:
         st.title("OnTheWay")
