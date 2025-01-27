@@ -149,7 +149,7 @@ def main():
     
     with col1:
         # Assuming your logo is in an 'assets' folder. Adjust path as needed
-        st.image("assets/logo.png", width=100)  # Adjust width as needed
+        st.image("logo.png", width=100)  # Adjust width as needed
     
     with col2:
         st.title("On The Way")
