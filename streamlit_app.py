@@ -149,11 +149,11 @@ def main():
     
     with col1:
         # Assuming your logo is in an 'assets' folder. Adjust path as needed
-        st.image("assets/logo.png", width=100)  # Adjust width as needed
+        st.image("assets/logo.png", width=200, use_column_width=True)  # Increased width and made responsive
     
     with col2:
-        st.title("On The Way")
-        st.write("*Your perfect road trip planner*")
+        st.title("OnTheWay")
+        st.write("*AI-powered road trip planner*")
 
     # Input section
     start_location = st.text_input("Enter start location:", key="start")
