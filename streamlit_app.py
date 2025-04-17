@@ -13,7 +13,7 @@ genai_api_key = st.secrets["api_keys"]["genai_api_key"]
 # Set up clients
 gmaps = googlemaps.Client(key=google_api_key)
 genai.configure(api_key=genai_api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-2.5-flash-preview-04-17")
 
 def trip_length_recommendation(start, end):
     prompt = (
